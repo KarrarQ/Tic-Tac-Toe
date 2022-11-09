@@ -1,47 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="./styles.css">
-        <title>Tic-Tac-Toe</title>
-    </head>
-    <body>
-        <section>
-          <h4>Player One</h4>
-          <img class="player-1-token" src="./assets/messi10.svg" alt="player 1 MESSI icon">
-          <h3>Wins: </h3>
-        </section>
-        <section class="game-board-container">
-          <header class="turn-counter">
-            <h2> Turn</h2>
-            <img class="player-1-token" src="./assets/messi10.svg" alt="player 1 MESSI icon">
-            <img class="player-2-token" src="./assets/ronaldo.png" alt="player 2 RONALDO icon">
-          </header>
-          <article class="game-board">
-            <button class="board-box" id="1"></button>
-            <button class="board-box" id="2"></button>
-            <button class="board-box" id="3"></button>
-            <button class="board-box" id="4"></button>
-            <button class="board-box" id="5"></button>
-            <button class="board-box" id="6"></button>
-            <button class="board-box" id="7"></button>
-            <button class="board-box" id="8"></button>
-            <button class="board-box" id="9"></button>
-          </article>
-          <footer class="announcements">
-            <img class="player-1-token" src="./assets/messi10.svg" alt="player 1 MESSI icon">
-            <img class="player-2-token" src="./assets/ronaldo.png" alt="player 2 RONALDO icon">
-            <h2> Wins!</h2>
-            <h2>It's a Draw!</h2>
-          </footer>
-        </section>
-        <section>
-          <h4>Player Two</h4>
-          <img class="player-2-token" src="./assets/ronaldo.png" alt="player 2 RONALDO icon">
-          <h3>Wins: </h3>
-        </section>
-        <script type="text/javascript" src="./src/player.js"></script>
-        <script type="text/javascript" src="./src/game.js"></script>
-        <script type="text/javascript" src="./src/main.js"></script>
-    </body>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Tic-Tac-Toe</title>
+  </head>
+  <body>
+    <section class="player-container left-side">
+      <img class="player-token" src="./assets/messi10.svg" alt="player 1 MESSI">
+      <h3 class="player-win-display" id="player1-win-count"></h3>
+    </section>
+    <section class="game-board-container">
+      <header class="banner" id="turn-counter"></header>
+      <article class="game-board-grid" id="game-board">
+        <button class="right-bot-border grid" id="a1"></button>
+        <button class="bottom-border grid" id="a2"></button>
+        <button class="left-bot-border grid" id="a3"></button>
+        <button class="right-bot-border grid" id="b1"></button>
+        <button class="bottom-border grid" id="b2"></button>
+        <button class="left-bot-border grid" id="b3"></button>
+        <button class="right-border grid" id="c1"></button>
+        <button class="no-border grid" id="c2"></button>
+        <button class="left-border grid" id="c3"></button>
+      </article>
+      <footer class="banner" id="announcements"></footer>
+      <button class="clear-wins" id="clear-player-wins">Clear Wins</button>
+    </section>
+    <section class="player-container right-side">
+      <img class="player-token" src="./assets/cr7.svg" alt="player 2 CR7">
+      <h3 class="player-win-display" id="player2-win-count"></h3>
+    </section>
+    <script type="text/javascript" src="./src/player.js"></script>
+    <script type="text/javascript" src="./src/game.js"></script>
+    <script type="text/javascript" src="./src/main.js"></script>
+  </body>
 </html>
