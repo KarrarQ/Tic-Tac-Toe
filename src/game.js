@@ -40,7 +40,7 @@ class Game {
 
     setPlayerToken(cellId) { // get token from this.players
         for (var i = 0; i < this.players.length; i++) {
-            if (!this.board[cellId] && this.players[i].name === this.currentTurn) {
+            if (!this.board[cellId] && this.players[i] === this.currentTurn) {
                 this.board[cellId] = this.players[i].token;
                 this.checkPlayerTurn();
             }
@@ -74,10 +74,6 @@ class Game {
     }
 
     checkVerticalWin() {
-        // vertical win conditions include
-        // [[0], [3], [6]]
-        // [[1], [4], [7]]
-        // [[2], [5], [8]]
         if (this.board.a1 === this.board.b1 && this.board.b1 === this.board.c1) {
             winningToken = this.board.a1;
         } else if (this.board.a2 === this.board.b2 && this.board.b2 === this.board.c2) {
@@ -90,9 +86,6 @@ class Game {
     }
 
     checkDiagonalWin() {
-        // diagonal win conditions include
-        // [[0], [4], [8]]
-        // [[2], [4], [6]]
         if (this.board.a1 === this.board.b2 && this.board.b2 === this.board.c3) {
             winningToken = this.board.a1;
         } else if (this.board.a3 === this.board.b2 && this.board.b2 === this.board.c1) {
