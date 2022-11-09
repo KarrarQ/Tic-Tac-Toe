@@ -12,3 +12,7 @@ var currentGame = new Game(playerOne, playerTwo);
 
 
 // Functions
+
+function triggerBoardReset() {
+    setTimeout(game.resetGame(), 2000);
+}
