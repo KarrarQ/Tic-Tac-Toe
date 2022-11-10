@@ -58,6 +58,9 @@ function renderBoard() {
             `<img class='img-pop' src=${currentGame.board[cellId]}>`;
         }
     }
+    console.log(currentGame.currentTurn);
+    console.log(currentGame.gameOver)
+    console.log(currentGame.isDraw)
     showCurrentTurn()
 }
 
