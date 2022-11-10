@@ -30,9 +30,9 @@ function showCurrentTurn() {
             turnCounter.innerHTML = 
             `<h2 class="player-header">The <img class="player-token" src="${currentGame.players[i].token}" alt="${currentGame.players[i].name}">'s Turn</h2>`
             }
-            if(currentGame.gameOver) {
-                turnCounter.innerHTML = "";
-            }
+            // if(currentGame.gameOver) {
+            //     turnCounter.innerHTML = "";
+            // }
         }
     }
 
@@ -43,7 +43,7 @@ function clickBoard(event) {
         }
     }
     renderBoard();
-    if (currentGame.gameOver) {
+    if (currentGame.gameOver || currentGame.isDraw) {
         setTimeout(triggerBoardReset, 2000);
     } 
 }
@@ -62,28 +62,30 @@ function renderBoard() {
     console.log(currentGame.gameOver)
     console.log(currentGame.isDraw)
     showCurrentTurn()
+    displayAnnouncement()
 }
 
+function displayAnnouncement() {
+    for (var i = 0; i < currentGame.players.length; i++) {
+        if (currentGame.isDraw) {
+            announcement.innerHTML = 
+            `<h2 class="announce-banner">It's a Draw!</h2>`;
+        } else if (currentGame.gameOver) {
+            announcement.innerHTML =
+            `<h2 class="announce-banner"><img class="player-token" src="${currentGame.players[i].token}" alt="${currentGame.players[i].name}"> Wins!</h2>`;
+        }
+    }
+}
 
 function triggerBoardReset() {
     currentGame.resetGame()
     renderBoard();
-    announcement.innerText = "";
+    announcement.innerHTML = "";
 }
 
-// Add Header Turn Tracker functionality
 
-// createGame (new game on refresh)
 
-// clickBoard (player token on dom)
-// for loop/conditional for tile that is placed?
-
-// turnCounter (change token to indicate turn)
 // swap src=${} dependent on currentTurn
 
 // displayAnnoucement (show the winner or draw/update currentGame.players[i]winsCount = player1-win-count)
  //game over display
-
- //function displayAnnouncement() {
-
-//  }
