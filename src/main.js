@@ -58,9 +58,11 @@ function renderBoard() {
             `<img class='img-pop' src=${currentGame.board[cellId]}>`;
         }
     }
-    console.log(currentGame.currentTurn);
-    console.log(currentGame.gameOver)
-    console.log(currentGame.isDraw)
+    console.log("turnCount:", currentGame.turnCount)
+    console.log("firstPlayer:", currentGame.firstPlayer)
+    console.log("currentTurnPlayer:", currentGame.currentTurn)
+    console.log("gameOver:", currentGame.gameOver)
+    console.log("isDraw:", currentGame.isDraw)
     showCurrentTurn()
     displayAnnouncement()
 }

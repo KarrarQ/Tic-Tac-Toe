@@ -42,7 +42,7 @@ class Game {
 
     setPlayerToken(cellId) { // get token from this.players
         for (var i = 0; i < this.players.length; i++) {
-            if (!this.gameOver && !this.board[cellId] && this.players[i].name === this.currentTurn) {
+            if (!this.gameOver && !this.isDraw && !this.board[cellId] && this.players[i].name === this.currentTurn) {
                 this.board[cellId] = this.players[i].token;
                 this.checkPlayerTurn();
             }
@@ -103,8 +103,8 @@ class Game {
 
     checkDrawCondition() {
         if (this.turnCount > 8) {
-            // currentGame.gameOver = true;
             currentGame.isDraw = true;
+            currentGame.gameOver = true;
         }
     }
 
@@ -125,10 +125,10 @@ class Game {
         currentGame.turnCount = 0;
         if (currentGame.firstPlayer === "playerOne") {
             currentGame.firstPlayer = "playerTwo";
-            currentGame.currentPlayer = "playerTwo";
+            currentGame.currentTurn = "playerTwo";
         } else {
             currentGame.firstPlayer = "playerOne";
-            currentGame.currentPlayer = "playerOne";
+            currentGame.currentTurn = "playerOne";
         }
     }
 }
