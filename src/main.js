@@ -7,6 +7,7 @@ var currentGame
 // Selectors
 var gameBoard = document.querySelector("#game-board");
 var boardCells = document.querySelectorAll(".grid");
+var boardCells = document.querySelectorAll("button");
 var turnCounter = document.querySelector("#turn-counter");
 var announcement = document.querySelector("#announcements");
 var player1Wins = document.querySelector("#player1-win-count");
@@ -18,58 +19,46 @@ window.addEventListener("load", createGame);
 gameBoard.addEventListener("click", clickBoard);
 
 // Functions
-function createGame(playerOne, playerTwo) {
+function createGame() {
     currentGame = new Game(playerOne, playerTwo);
-    currentGame.players.push(playerOne, playerTwo);
-    console.log(currentGame)
 }
+
+function clickBoard(event) {
+    var cellId = event.target.id; {
+    if (currentGame.board[cellId] === "") {
+        currentGame.setPlayerToken(cellId);
+        }
+    }
+    renderBoard();
+    if (currentGame.gameOver) {
+        setTimeout(triggerBoardReset, 2000);
+    } 
+}
+
+function renderBoard() { 
+    for (var i = 0; i < boardCells.length; i++) {
+        var cellId = boardCells[i].id;
+        if (!currentGame.board[cellId]) {
+            boardCells[i].innerHTML = "";
+        } else {
+            boardCells[i].innerHTML =
+            `<img class='img-pop' src=${currentGame.board[cellId]}>`;
+        }
+    }
+}
+
 // createGame (new game on refresh)
 
 // clickBoard (player token on dom)
 // for loop/conditional for tile that is placed?
 
-// function clickBoard(event) {
-//     console.log(currentGame)
-//     console.log(Object.values(currentGame.board))
-//     var cellId = event.target.id; {
-//     if (currentGame.board[cellId] === "") {
-//         currentGame.setPlayerToken(cellId);
-//         }
-//     }
-//     console.log(currentGame)
-//     console.log(Object.values(currentGame.board))
-//     renderBoard();
-// }
-
-// function renderBoard() {
-//     gameBoard.innerHTML = "";
-
-//     for (var i = 0; i < currentGame.players.length; i++) {
-//         var playerTileToken = "./assets/messi10.svg";
-
-//         if (currentGame.players[i].token === playerTileToken) {
-//             playerTileToken = "./assets/cr7.svg";
-//         }
-
-//         gameBoard.innerHTML += 
-//         `
-
-//         <img class="player-token" src=${playerTileToken} alt="player 1 messi">`;
-//     }
-
-// }
-
 // turnCounter (change token to indicate turn)
 // swap src=${} dependent on currentTurn
 
-// displayWinner (show the winner/invoke updateWinCount)
-
-
-// updateWinCount (increase win count on page)
-
-// displayDraw (show the Draw message)
-
+// displayAnnoucement (show the winner or draw/update currentGame.players[i]winsCount = player1-win-count)
 
 function triggerBoardReset() {
-    setTimeout(game.resetGame(), 2000);
+    currentGame.resetGame()
+    renderBoard();
+    announcement.innerText = "";
 }
