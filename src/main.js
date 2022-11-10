@@ -2,7 +2,7 @@
 // Global Variables
 var playerOne = new Player("playerOne", "./assets/messi10.svg");
 var playerTwo = new Player("playerTwo", "./assets/cr7.svg");
-var currentGame 
+var currentGame;
 
 // Selectors
 var gameBoard = document.querySelector("#game-board");
@@ -21,7 +21,20 @@ gameBoard.addEventListener("click", clickBoard);
 // Functions
 function createGame() {
     currentGame = new Game(playerOne, playerTwo);
+    showCurrentTurn()
 }
+
+function showCurrentTurn() {
+    for (var i = 0; i < currentGame.players.length; i++) {
+        if (currentGame.currentTurn === currentGame.players[i].name) {
+            turnCounter.innerHTML = 
+            `<h2 class="player-header">The <img class="player-token" src="${currentGame.players[i].token}" alt="${currentGame.players[i].name}">'s Turn</h2>`
+            }
+            if(currentGame.gameOver) {
+                turnCounter.innerHTML = "";
+            }
+        }
+    }
 
 function clickBoard(event) {
     var cellId = event.target.id; {
@@ -45,7 +58,17 @@ function renderBoard() {
             `<img class='img-pop' src=${currentGame.board[cellId]}>`;
         }
     }
+    showCurrentTurn()
 }
+
+
+function triggerBoardReset() {
+    currentGame.resetGame()
+    renderBoard();
+    announcement.innerText = "";
+}
+
+// Add Header Turn Tracker functionality
 
 // createGame (new game on refresh)
 
@@ -56,9 +79,8 @@ function renderBoard() {
 // swap src=${} dependent on currentTurn
 
 // displayAnnoucement (show the winner or draw/update currentGame.players[i]winsCount = player1-win-count)
+ //game over display
 
-function triggerBoardReset() {
-    currentGame.resetGame()
-    renderBoard();
-    announcement.innerText = "";
-}
+ //function displayAnnouncement() {
+
+//  }

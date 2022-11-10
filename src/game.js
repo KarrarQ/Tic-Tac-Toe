@@ -93,7 +93,7 @@ class Game {
         if (this.board.a1 === this.board.b2 && this.board.b2 === this.board.c3) {
             return this.board.a1;
         } else if (this.board.a3 === this.board.b2 && this.board.b2 === this.board.c1) {
-            return this.board.a3;
+              return this.board.a3;
         } else {
             return "";
         }
