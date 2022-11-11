@@ -1,9 +1,3 @@
-// Methods needed:
-// Check for win conditions: 3 horizontally, vertically, or diagonally (checkWin) (then invoke resetGame)
-// Check for draw condition (checkDraw) (then invoke resetGame)
-// Reset game (resetGame)
-// Track Turns
-
 class Game {
     constructor(playerOne, playerTwo) {
         this.board = {
@@ -25,7 +19,7 @@ class Game {
         this.turnCount = 0;
     }
 
-    checkPlayerTurn() { // determine currentTurn
+    checkPlayerTurn() { 
         this.turnCount += 1;
         this.checkDrawCondition();
         this.checkWinCondition();
@@ -40,7 +34,7 @@ class Game {
         }
     }
 
-    setPlayerToken(cellId) { // get token from this.players
+    setPlayerToken(cellId) { 
         for (var i = 0; i < this.players.length; i++) {
             if (!this.gameOver && !this.isDraw && !this.board[cellId] && this.players[i].name === this.currentTurn) {
                 this.board[cellId] = this.players[i].token;
@@ -50,7 +44,6 @@ class Game {
     } 
 
     checkWinCondition() {
-        // check hor/vert/diag/draw methods
         var winningToken = this.checkHorizontalWin();
         if (!winningToken) {
             winningToken = this.checkVerticalWin();
@@ -71,9 +64,9 @@ class Game {
         if (this.board.a1 && this.board.a1 === this.board.a2 && this.board.a2 === this.board.a3) {
             return this.board.a1;
         } else if (this.board.b1 && this.board.b1 === this.board.b2 && this.board.b2 === this.board.b3) {
-            return this.board.b1;// not triggering
+            return this.board.b1;
         } else if (this.board.c1 && this.board.c1 === this.board.c2 && this.board.c2 === this.board.c3) {
-            return this.board.c1;// not triggering
+            return this.board.c1;
         } else {
             return "";
         }
@@ -83,10 +76,9 @@ class Game {
         if (this.board.a1 && this.board.a1 === this.board.b1 && this.board.b1 === this.board.c1) {
             return this.board.a1;
         } else if (this.board.a2 && this.board.a2 === this.board.b2 && this.board.b2 === this.board.c2) {
-            return this.board.a2; // not triggering
+            return this.board.a2; 
         } else if (this.board.a3 && this.board.a3 === this.board.b3 && this.board.b3 === this.board.c3) {
-            return this.board.a3;// not triggering
-        } else {
+            return this.board.a3;
             return "";
         }
     }

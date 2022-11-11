@@ -16,7 +16,7 @@ var clearPlayerWins = document.querySelector("#clear-player-wins");
 
 // Event Listeners 
 window.addEventListener("load", createGame);
-gameBoard.addEventListener("click", clickBoard);
+gameBoard.addEventListener("click", handleBoardClick);
 
 // Functions
 function createGame() {
@@ -36,7 +36,7 @@ function showCurrentTurn() {
         }
     }
 
-function clickBoard(event) {
+    function handleBoardClick(event) {
     var cellId = event.target.id;  
     if (currentGame.board[cellId] === "") {
         currentGame.setPlayerToken(cellId);
@@ -92,9 +92,3 @@ function triggerBoardReset() {
     announcement.innerHTML = "";
     renderBoard();
 }
-
-
-
-// swap src=${} dependent on currentTurn
-
-
