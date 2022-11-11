@@ -28,7 +28,7 @@ function showCurrentTurn() {
     for (var i = 0; i < currentGame.players.length; i++) {
         if (currentGame.currentTurn === currentGame.players[i].name) {
             turnCounter.innerHTML = 
-            `<h2 class="player-header">The <img class="player-token" src="${currentGame.players[i].token}" alt="${currentGame.players[i].name}">'s Turn</h2>`
+            `The <img class="player-token" src="${currentGame.players[i].token}" alt="${currentGame.players[i].name}">'s Turn`
             }
             // if(currentGame.gameOver) {
             //     turnCounter.innerHTML = "";
@@ -37,10 +37,10 @@ function showCurrentTurn() {
     }
 
 function clickBoard(event) {
-    var cellId = event.target.id; {
+    var cellId = event.target.id;  
     if (currentGame.board[cellId] === "") {
         currentGame.setPlayerToken(cellId);
-        }
+        
     }
     renderBoard();
     if (currentGame.gameOver || currentGame.isDraw) {
@@ -71,11 +71,10 @@ function renderBoard() {
 function displayAnnouncement() {
     for (var i = 0; i < currentGame.players.length; i++) {
         if (currentGame.isDraw && !currentGame.gameOver) {
-            announcement.innerHTML = 
-            `<h2 class="announce-banner">It's a Draw!</h2>`;
+            announcement.innerHTML = `It's a Draw!`;
         } else if (currentGame.gameOver && currentGame.currentTurn === currentGame.players[i].name) {
             announcement.innerHTML =
-            `<h2 class="announce-banner"><img class="player-token" src="${currentGame.players[i].token}" alt="${currentGame.players[i].name}"> Wins!</h2>`;
+            `<img class="player-token" src="${currentGame.players[i].token}" alt="${currentGame.players[i].name}"> Wins!`;
         }
     }
 }
