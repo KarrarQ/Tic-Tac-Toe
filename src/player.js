@@ -4,4 +4,9 @@ class Player {
         this.token = playerToken;
         this.winsCount = 0;
     }
+
+    increaseWins() {
+        this.winsCount += 1;
+    }
+    
 }

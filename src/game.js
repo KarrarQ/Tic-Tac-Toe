@@ -54,7 +54,7 @@ class Game {
         }
         for (var i = 0; i < this.players.length; i++) {
             if (winningToken === this.players[i].token) {
-                this.players[i].winsCount += 1;
+                this.players[i].increaseWins();
                 this.gameOver = true;
                 this.isDraw = false;
             }
@@ -80,6 +80,7 @@ class Game {
             return this.board.a2; 
         } else if (this.board.a3 && this.board.a3 === this.board.b3 && this.board.b3 === this.board.c3) {
             return this.board.a3;
+        }else {
             return "";
         }
     }
