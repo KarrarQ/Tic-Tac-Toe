@@ -12,7 +12,7 @@ body {
     align-items: center;
     background-position: center;
     background-size: cover;
-    color: antiquewhite;
+    color: rgba(255, 255, 255, 0.956);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -41,7 +41,7 @@ body {
 .game-board-container {
     align-items: center;
     background-image: linear-gradient(#125718, #7e99e5, #7f9a83);
-    color: antiquewhite;
+    color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -71,6 +71,12 @@ body {
     height: 55%;
     justify-content: center;
     width: 65%;
+}
+
+.img-pop {
+    height: 100px;
+    margin: 15px 0px 7px 0px;
+    width: 100px;
 }
 
 /* Buttons */
