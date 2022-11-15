@@ -8,6 +8,7 @@ If you're new to the world of Tic-Tac-Toe, do not fear. The rules for Tic-Tac-To
 
 ## Creator Karrar Qasim
 [GitHub](https://github.com/KarrarQ)
+
 [LinkedIn](https://www.linkedin.com/in/karrar-qasim-b6307024b/)
 
 #### Deploy Link
