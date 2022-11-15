@@ -21,7 +21,11 @@ gameBoard.addEventListener("click", handleBoardClick);
 // Functions
 function createGame() {
     currentGame = new Game(playerOne, playerTwo);
+    currentGame.players[0].getWins();
+    currentGame.players[1].getWins();
+    updatePlayerWins();
     showCurrentTurn()
+
 }
 
 function showCurrentTurn() {
@@ -59,11 +63,11 @@ function renderBoard() {
             `<img class='img-pop' src=${currentGame.board[cellId]}>`;
         }
     }
-    console.log("turnCount:", currentGame.turnCount)
-    console.log("firstPlayer:", currentGame.firstPlayer)
-    console.log("currentTurnPlayer:", currentGame.currentTurn)
-    console.log("gameOver:", currentGame.gameOver)
-    console.log("isDraw:", currentGame.isDraw)
+    // console.log("turnCount:", currentGame.turnCount)
+    // console.log("firstPlayer:", currentGame.firstPlayer)
+    // console.log("currentTurnPlayer:", currentGame.currentTurn)
+    // console.log("gameOver:", currentGame.gameOver)
+    // console.log("isDraw:", currentGame.isDraw)
     showCurrentTurn();
     updatePlayerWins();
     displayAnnouncement();
@@ -84,11 +88,19 @@ function displayAnnouncement() {
 }
 
 function updatePlayerWins() {
-    player1Wins.innerHTML = 
-    `Wins: ${currentGame.players[0].winsCount}`;
+    if (currentGame.players[0].winsCount) {
+        player1Wins.innerHTML = 
+        `Wins: ${currentGame.players[0].winsCount}`;
+    } else {
+        `Wins: 0`;
+    }
 
-    player2Wins.innerHTML = 
-    `Wins: ${currentGame.players[1].winsCount}`;
+    if (currentGame.players[1].winsCount) {
+        player2Wins.innerHTML = 
+        `Wins: ${currentGame.players[1].winsCount}`;
+    } else {
+        `Wins: 0`;
+    }
 }
 
 function triggerBoardReset() {
