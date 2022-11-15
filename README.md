@@ -6,13 +6,10 @@ Tic-Tac-Toe is the final project for Turing's Mod 1 Front-End Engineering studen
 
 If you're new to the world of Tic-Tac-Toe, do not fear. The rules for Tic-Tac-Toe are simple and ageless: you and another player (in this case, another friend or rival!) will choose a side, Ronaldo or Messi. Your ultimate goal is to win the game by achieving a 3-token line either horizontally, vertically, or diagonally. Your page will display the winner or a draw, and then after a short period of time the board will reset so that you may face off once more. The side bar that corresponds with your chosen token will keep track of your wins, and all you need to play is an open broswer tab! (I recommend Chrome Web Broswer.)
 
-## Creator Karrar Qasim
-[GitHub](https://github.com/KarrarQ)
-
-[LinkedIn](https://www.linkedin.com/in/karrar-qasim-b6307024b/)
-
 #### Deploy Link
 [Try the website here!](https://karrarq.github.io/Tic-Tac-Toe/)
+
+<img width="1440" alt="Screen Shot 2022-11-15 at 1 14 20 PM" src="https://user-images.githubusercontent.com/108508596/202016796-2b72da67-a84b-492e-83a1-b2bcbf33defc.png">
 
 ## Set-up for your Local Machine
 
@@ -48,3 +45,8 @@ My biggest challenge (out of the many) was connecting my data model in `game.js`
 
 #### Celebrations
 Unsurprising to anyone who knows me, I enjoy getting to flex the creative side of my brain and I had a lot of fun playing with the CSS to design a thematic board.
+
+## Creator Karrar Qasim
+[GitHub](https://github.com/KarrarQ)
+
+[LinkedIn](https://www.linkedin.com/in/karrar-qasim-b6307024b/)
