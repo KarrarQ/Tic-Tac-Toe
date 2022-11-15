@@ -17,6 +17,12 @@ class Player {
     getWins() {
         var retrievedWins = localStorage.getItem(`stored-wins-${this.name}`);
         var parsedWins = JSON.parse(retrievedWins);
-        return this.winsCount = parsedWins;
+        if (parsedWins) {
+            this.winsCount = parsedWins;
+        }
+    }
+
+    clearWins() {
+        this.winsCount = 0;
     }
 }
