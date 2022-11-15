@@ -23,7 +23,8 @@ function createGame() {
     currentGame = new Game(playerOne, playerTwo);
     currentGame.players[0].getWins();
     currentGame.players[1].getWins();
-    updatePlayerWins();
+    updatePlayerWins(player1Wins, 0);
+    updatePlayerWins(player2Wins, 1);
     showCurrentTurn()
 
 }
@@ -63,13 +64,9 @@ function renderBoard() {
             `<img class='img-pop' src=${currentGame.board[cellId]}>`;
         }
     }
-    // console.log("turnCount:", currentGame.turnCount)
-    // console.log("firstPlayer:", currentGame.firstPlayer)
-    // console.log("currentTurnPlayer:", currentGame.currentTurn)
-    // console.log("gameOver:", currentGame.gameOver)
-    // console.log("isDraw:", currentGame.isDraw)
     showCurrentTurn();
-    updatePlayerWins();
+    updatePlayerWins(player1Wins, 0);
+    updatePlayerWins(player2Wins, 1);
     displayAnnouncement();
 }
 
@@ -86,25 +83,21 @@ function displayAnnouncement() {
         }
     }
 }
-
-function updatePlayerWins() {
-    if (currentGame.players[0].winsCount) {
-        player1Wins.innerHTML = 
-        `Wins: ${currentGame.players[0].winsCount}`;
-    } else {
-        `Wins: 0`;
-    }
-
-    if (currentGame.players[1].winsCount) {
-        player2Wins.innerHTML = 
-        `Wins: ${currentGame.players[1].winsCount}`;
-    } else {
-        `Wins: 0`;
-    }
+function updatePlayerWins(playerBanner, player) {
+    playerBanner.innerText = `Wins: ${currentGame.players[player].winsCount}`;
 }
 
-// function deletePlayerWins() {
-// }
+function deletePlayerWins() {
+    localStorage.removeItem(`stored-wins-${currentGame.players[0].name}`);
+    localStorage.removeItem(`stored-wins-${currentGame.players[1].name}`);
+
+    for (var i = 0; i < currentGame.players.length; i++) {
+        currentGame.players[i].clearWins();
+    }
+
+    updatePlayerWins(player1Wins, 0);
+    updatePlayerWins(player2Wins, 1);
+}
 
 function triggerBoardReset() {
     currentGame.resetGame();

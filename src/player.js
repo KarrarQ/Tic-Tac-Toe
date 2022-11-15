@@ -2,7 +2,7 @@ class Player {
     constructor(playerName, playerToken) {
         this.name = playerName;
         this.token = playerToken;
-        this.winsCount = parseInt(localStorage.getItem(this.name)) || 0
+        this.winsCount = 0
     }
 
     increaseWins() {
