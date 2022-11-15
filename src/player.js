@@ -2,7 +2,7 @@ class Player {
     constructor(playerName, playerToken) {
         this.name = playerName;
         this.token = playerToken;
-        this.winsCount = parseInt(localStorage.getItem(this.name)) || 0
+        this.winsCount = 0
     }
 
     increaseWins() {
@@ -17,6 +17,12 @@ class Player {
     getWins() {
         var retrievedWins = localStorage.getItem(`stored-wins-${this.name}`);
         var parsedWins = JSON.parse(retrievedWins);
-        return this.winsCount = parsedWins;
+        if (parsedWins) {
+            this.winsCount = parsedWins;
+        }
+    }
+
+    clearWins() {
+        this.winsCount = 0;
     }
 }

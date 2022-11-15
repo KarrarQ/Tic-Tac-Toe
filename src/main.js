@@ -7,7 +7,6 @@ var currentGame;
 // Selectors
 var gameBoard = document.querySelector("#game-board");
 var boardCells = document.querySelectorAll(".grid");
-var boardCells = document.querySelectorAll("button");
 var turnCounter = document.querySelector("#turn-counter");
 var announcement = document.querySelector("#announcements");
 var player1Wins = document.querySelector("#player1-win-count");
@@ -17,13 +16,15 @@ var clearPlayerWins = document.querySelector("#clear-player-wins");
 // Event Listeners 
 window.addEventListener("load", createGame);
 gameBoard.addEventListener("click", handleBoardClick);
+clearPlayerWins.addEventListener("click", deletePlayerWins);
 
 // Functions
 function createGame() {
     currentGame = new Game(playerOne, playerTwo);
     currentGame.players[0].getWins();
     currentGame.players[1].getWins();
-    updatePlayerWins();
+    updatePlayerWins(player1Wins, 0);
+    updatePlayerWins(player2Wins, 1);
     showCurrentTurn()
 
 }
@@ -63,13 +64,9 @@ function renderBoard() {
             `<img class='img-pop' src=${currentGame.board[cellId]}>`;
         }
     }
-    // console.log("turnCount:", currentGame.turnCount)
-    // console.log("firstPlayer:", currentGame.firstPlayer)
-    // console.log("currentTurnPlayer:", currentGame.currentTurn)
-    // console.log("gameOver:", currentGame.gameOver)
-    // console.log("isDraw:", currentGame.isDraw)
     showCurrentTurn();
-    updatePlayerWins();
+    updatePlayerWins(player1Wins, 0);
+    updatePlayerWins(player2Wins, 1);
     displayAnnouncement();
 }
 
@@ -86,21 +83,20 @@ function displayAnnouncement() {
         }
     }
 }
+function updatePlayerWins(playerBanner, player) {
+    playerBanner.innerText = `Wins: ${currentGame.players[player].winsCount}`;
+}
 
-function updatePlayerWins() {
-    if (currentGame.players[0].winsCount) {
-        player1Wins.innerHTML = 
-        `Wins: ${currentGame.players[0].winsCount}`;
-    } else {
-        `Wins: 0`;
+function deletePlayerWins() {
+    localStorage.removeItem(`stored-wins-${currentGame.players[0].name}`);
+    localStorage.removeItem(`stored-wins-${currentGame.players[1].name}`);
+
+    for (var i = 0; i < currentGame.players.length; i++) {
+        currentGame.players[i].clearWins();
     }
 
-    if (currentGame.players[1].winsCount) {
-        player2Wins.innerHTML = 
-        `Wins: ${currentGame.players[1].winsCount}`;
-    } else {
-        `Wins: 0`;
-    }
+    updatePlayerWins(player1Wins, 0);
+    updatePlayerWins(player2Wins, 1);
 }
 
 function triggerBoardReset() {
