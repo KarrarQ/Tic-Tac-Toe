@@ -14,8 +14,6 @@ If you're new to the world of Tic-Tac-Toe, do not fear. The rules for Tic-Tac-To
 #### Deploy Link
 [Try the website here!](https://karrarq.github.io/Tic-Tac-Toe/)
 
-[Turing's Tic-Tac-Toe Specs](https://frontend.turing.edu/projects/module-1/tic-tac-toe-solo-v2.html)
-
 ## Set-up for your Local Machine
 
 If you have access to this repository (which is currently private at this time), here are the steps to access the web page from your local machine:
